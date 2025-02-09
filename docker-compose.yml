@@ -1,0 +1,16 @@
+services:
+  mysql:
+    image: mariadb:latest
+    container_name: learn-spring_boot-security
+    ports:
+      - 3310:3306
+    environment:
+      TZ: Asia/Seoul
+      MYSQL_DATABASE: learn_security
+      MYSQL_CHARSET: utf8mb4
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_COLLATION: utf8mb4_unicode_ci
+    volumes:
+      - ../../database/learnSpringBootSecurity/var/lib/mysql:/var/lib/mysql
+      - ../../database/learnSpringBootSecurity/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    restart: always  # 자동 재시작 설정
